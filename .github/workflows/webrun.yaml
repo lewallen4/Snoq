@@ -1,4 +1,4 @@
-name: Generate and Publish Weather
+name: Generate and Publish snoq
 
 on:
   schedule:
@@ -18,65 +18,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Run Desktop weather script for SEA
-        timeout-minutes: 1
-        continue-on-error: true
-        run: |
-          bash script.sh -z 98144
-
-      - name: move SEA Index for web upload
-        run: |
-          mkdir www
-          cp db/frontEnd.html www/index.html
-          cp db/logo.gif www/logo.gif
-          cp db/radar.gif www/radar.gif
-
-      - name: move SEA Mobile for web upload
-        run: |
-          mkdir www/mobile
-          cp db/frontEndmobile.html www/mobile/index.html
-          cp db/logo.gif www/mobile/logo.gif
-          cp db/radar.gif www/mobile/radar.gif
-
-      - name: Run weather script AUS
-        timeout-minutes: 1
-        continue-on-error: true
-        run: |
-          bash script.sh -z 78702
-
-      - name: move AUS for web upload
-        run: |
-          mkdir www/aus
-          cp db/frontEndmobile.html www/aus/index.html
-          cp db/logo.gif www/aus/logo.gif
-          cp db/radar.gif www/aus/radar.gif
-
-      - name: Run weather script WILD
+      - name: Run Desktop weather script for snoq
         timeout-minutes: 1
         continue-on-error: true
         run: |
           bash script.sh -z 98068
 
-      - name: move Wild for web upload
+      - name: move snoq Index for web upload
         run: |
-          mkdir www/wild
-          cp db/frontEndmobile.html www/wild/index.html
-          cp db/logo.gif www/wild/logo.gif
-          cp db/radar.gif www/wild/radar.gif
-
-
-      - name: Run weather script LA
-        timeout-minutes: 1
-        continue-on-error: true
-        run: |
-          bash script.sh -z 90621
-
-      - name: move LA for web upload
-        run: |
-          mkdir www/LA
-          cp db/frontEndmobile.html www/LA/index.html
-          cp db/logo.gif www/LA/logo.gif
-          cp db/radar.gif www/LA/radar.gif
+          mkdir www
+          cp db/frontEndmobile.html www/index.html
+          cp db/logo.gif www/logo.gif
+          cp db/radar.gif www/radar.gif
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
